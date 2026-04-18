@@ -1,104 +1,51 @@
-# CrowdSync Lite 🚀
+# CrowdSync Lite – Smart Stadium Assistant
+##🚀 AI-powered real-time smart navigation assistant for stadium crowd optimization
 
-A real-time digital twin system for smart stadium experience.
+## Chosen Vertical
+Smart Event & Stadium Management System
 
----
+## Problem Statement
+Managing large crowds in stadiums often leads to congestion, long queues, and poor user experience. Visitors lack real-time visibility and intelligent guidance to navigate efficiently.
 
-## 🧠 Problem
+## Solution
+CrowdSync is a real-time smart assistant designed to monitor crowd density and provide intelligent recommendations for movement, entry, and facility usage inside large event venues.
 
-Large-scale stadiums face:
+## Key Features
+- Real-time crowd monitoring using Firebase Firestore
+- AI-powered Smart Route Recommendation system
+- Intelligent gate and zone suggestions
+- Facilities insights (toilets, food, parking)
+- Transport availability tracking
+- Dynamic UI updates with live data
 
-* Crowd congestion
-* Long queues (food, toilets, gates)
-* No real-time visibility for users
+## How It Works
+- Firebase Firestore provides real-time updates for zones, gates, and facilities
+- The system continuously calculates crowd density percentages
+- Based on real-time data, it identifies congested and less crowded areas
+- It generates smart recommendations for optimal entry gates and movement paths
+- Users receive actionable insights to avoid congestion and improve experience
 
----
+## Google Services Used
+- Firebase Firestore (real-time database)
+- Google Cloud Run (deployment and hosting)
 
-## 💡 Solution
+## Assumptions
+- Crowd data is updated in real-time
+- Each user is assigned a zone dynamically
+- Gate-to-zone mapping is predefined
+- Facilities data reflects live usage
 
-**CrowdSync Lite** provides a real-time intelligent system that:
+## Improvements Made
+- Added AI-powered smart route recommendation system
+- Improved security using environment variables (.env)
+- Added basic testing for functionality validation
+- Enhanced accessibility using semantic HTML and ARIA labels
+- Optimized Firebase usage for better performance and efficiency
 
-* 📊 Tracks live crowd density across zones
-* 🎟️ Updates entry in real-time (BOOKED → ENTERED)
-* 🚻 Shows facility usage (toilet, food, parking)
-* 🚪 Displays gate crowd status
-* 🗺️ Visualizes stadium layout (map view)
-* 🚇 Provides transport availability after event
-* 🤖 Suggests better zones to users (smart guidance)
+## Repository Details
+- Public GitHub repository
+- Single branch implementation
+- Lightweight codebase (<1 MB)
 
----
-
-## ⚡ Key Features
-
-* 🔴 Real-time updates using Firebase (no refresh)
-* 🧭 Stadium map visualization (zone-based)
-* 📈 Smart crowd insights (low/high density)
-* 🎯 Entry system with live crowd increment
-* 📊 Facility monitoring with progress bars
-* 🚪 Gate-level crowd visibility
-* 🚇 Post-event transport tracking
-
----
-
-## 🏗️ Tech Stack
-
-* **Frontend:** Antigravity
-* **Backend:** Firebase Firestore
-* **Hosting:** Firebase / Local
-* **Version Control:** GitHub
-
----
-
-## 🚀 How to Run
-
-```bash
-npm install
-npm run dev
-```
-
----
-
-## 🎬 Demo Flow
-
-1. View live stadium zones
-2. Click **Enter Stadium** → real-time update
-3. Check facilities (toilet, food, parking)
-4. View gate crowd status
-5. See transport availability
-
----
-
-## 🧠 Innovation
-
-* Real-time synchronization of user actions and crowd data
-* Smart suggestions based on live conditions
-* Visual stadium digital twin
-
----
-
-## 📈 Impact
-
-* Reduces wait time
-* Improves crowd movement
-* Enhances user experience in large venues
-
----
-
-## 🔮 Future Scope
-
-* AI-based crowd prediction
-* Navigation inside stadium
-* Integration with IoT sensors
-* Multi-stadium scalability
-
----
-
-## 👨‍💻 Author
-
-Mahesh Waghmode
-
----
-
-## ⭐ Tagline
-
-> “Real-time intelligence for smarter stadium experiences.”
+## Conclusion
+CrowdSync transforms traditional crowd monitoring into an intelligent decision-making system, helping users navigate large venues efficiently while reducing congestion and improving overall event experience.

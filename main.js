@@ -11,6 +11,7 @@ import {
   where, 
   getDocs 
 } from "firebase/firestore";
+let zonesCache = [];
 
 function getStatusClass(percentage) {
   if (percentage < 40) return 'status-low';
@@ -69,16 +70,20 @@ function updateSmartSuggestion(zones) {
 
   // Only show if the busiest is actually crowded (> 70%)
   if (busiest.perc > 70) {
-    container.innerHTML = `
-      <div class="suggestion-card">
-        <span class="suggestion-icon">✦</span>
-        <div class="suggestion-content">
-          <p class="suggestion-text">
-            <strong>${busiest.name}</strong> is crowded (${busiest.perc}%). 
-            You can move to <strong>${quietest.name}</strong> (${quietest.perc}%) for a better experience.
-          </p>
-        </div>
-      </div>
+   container.innerHTML = `
+  <div class="suggestion-card">
+    <span class="suggestion-icon">🚀</span>
+    <div class="suggestion-content">
+      <p style="font-size:12px; color:#00d4ff;">AI Powered Recommendation</p>
+      <p class="suggestion-text">
+        Smart Route Suggestion:<br>
+        Avoid <strong>${busiest.name}</strong> (${busiest.perc}%).<br>
+        Enter via <strong>Gate ${quietest.name.slice(-1)}</strong> → Move to <strong>${quietest.name}</strong> (${quietest.perc}%).<br>
+        This path will save time and reduce crowd exposure.
+      </p>
+    </div>
+  </div>
+`;
     `;
   } else {
     container.innerHTML = '';
@@ -274,6 +279,7 @@ function renderMapGates(gates) {
 async function handleEntry() {
   const button = document.getElementById('enter-stadium');
   if (!button) return;
+if (button.disabled) return;
 
   try {
     button.disabled = true;
@@ -336,6 +342,7 @@ async function handleEntry() {
 
   } catch (error) {
     console.error("Entry error:", error);
+    alert("Something went wrong. Please try again.");
     button.disabled = false;
     button.innerText = 'Entry Failed - Try Again';
   }
@@ -374,12 +381,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Zones listener
-  onSnapshot(zonesQuery, (snapshot) => {
-    const zones = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
-    console.log("Zones data fetched:", zones);
+onSnapshot(zonesQuery, (snapshot) => {
+  if (!snapshot || snapshot.empty) {
+    console.warn("No zones data available");
+    return;
+  }
+
+  const zones = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
+zonesCache = zones;
+    
     renderZones(zones);
     updateSmartSuggestion(zones);
     renderMapZones(zones);
@@ -387,17 +400,26 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Facilities listener
   onSnapshot(facilitiesQuery, (snapshot) => {
-    const facilities = snapshot.docs.map(doc => ({
-      id: doc.id,
-      ...doc.data()
-    }));
-    renderFacilities(facilities);
-  }, (error) => {
-    console.error("Facilities error:", error);
-  });
+  if (!snapshot || snapshot.empty) {
+    console.warn("No facilities data available");
+    return;
+  }
+
+  const facilities = snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }));
+  renderFacilities(facilities);
+}, (error) => {
+  console.error("Facilities error:", error);
+});
 
   // Gates listener
-  onSnapshot(gatesQuery, (snapshot) => {
+  onSnapshot(gatesQuery, (snapshot) => { 
+if (!snapshot || snapshot.empty) {
+    console.warn("No gates data available");
+    return;
+}
     const gates = snapshot.docs.map(doc => ({
       id: doc.id,
       ...doc.data()

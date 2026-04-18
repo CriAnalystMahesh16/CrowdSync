@@ -6,10 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "start": "serve -s dist -l 8080"
+    "preview": "vite preview",
+    "test": "node basic.test.js"
   },
   "devDependencies": {
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vitest": "^4.1.4"
   },
   "dependencies": {
     "firebase": "^12.12.0",

@@ -1,17 +1,8 @@
-import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
-
 const firebaseConfig = {
-  projectId: "crowdsync-5e3e1",
-  appId: "1:247708709546:web:60de651dc2f5efe173d6d3",
-  storageBucket: "crowdsync-5e3e1.firebasestorage.app",
-  apiKey: "AIzaSyBCwgjZJMvfayZUKQeqja5yBGNO3Zypd7k",
-  authDomain: "crowdsync-5e3e1.firebaseapp.com",
-  messagingSenderId: "247708709546",
-  projectNumber: "247708709546"
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID
 };
-
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-
-export { db };

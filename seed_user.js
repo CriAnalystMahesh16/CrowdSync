@@ -5,7 +5,7 @@ const firebaseConfig = {
   projectId: "crowdsync-5e3e1",
   appId: "1:247708709546:web:60de651dc2f5efe173d6d3",
   storageBucket: "crowdsync-5e3e1.firebasestorage.app",
-  apiKey: "AIzaSyBCwgjZJMvfayZUKQeqja5yBGNO3Zypd7k",
+  apiKey: process.env.VITE_API_KEY,
   authDomain: "crowdsync-5e3e1.firebaseapp.com",
   messagingSenderId: "247708709546",
   projectNumber: "247708709546"

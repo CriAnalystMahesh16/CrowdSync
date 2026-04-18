@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CrowdSync | Smart Stadium</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="header-left">
+          <h1 class="logo">Crowd<span>Sync</span></h1>
+          <p class="status-summary">Stadium Overview • Live</p>
+        </div>
+        <div class="header-right">
+          <span class="live-badge-main">LIVE</span>
+        </div>
+      </header>
+      
+      <main class="dashboard" id="overview-view">
+        <!-- Main Dashboard Card -->
+        <div class="main-dashboard-card">
+          <div class="card-header">
+            <h2>Stadium Zones</h2>
+            <p>Live crowd density across all zones</p>
+          </div>
+          
+          <div class="dashboard-split">
+            <div class="map-visual-section">
+              <div class="stadium-container" id="stadium-map-container">
+                <!-- Stadium map will be injected here -->
+              </div>
+            </div>
+            
+            <div class="map-stats-section">
+              <div id="zones-summary-panel" class="summary-cards">
+                <!-- Summary list will be injected here -->
+              </div>
+              <div class="tip-card">
+                <span class="tip-pill">
+                  <span class="tip-icon">💡</span>
+                </span>
+                <p>Tip: Tap any zone to see facilities and get suggestions</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Middle Action Section -->
+        <div class="actions-section">
+          <button id="enter-stadium" class="premium-button">Enter Stadium</button>
+          <div id="entry-status" class="entry-status-msg"></div>
+        </div>
+        
+        <!-- Bottom Detailed Grid -->
+        <div class="zones-grid" id="zones-container">
+          <!-- Detailed zone cards will be injected here -->
+        </div>
+        
+        <div id="suggestion-container" class="suggestion-section"></div>
+      </main>
+
+      <main class="dashboard" id="facilities-view" style="display: none;">
+        <h3 class="stat-label section-header">OPERATIONAL FACILITIES</h3>
+        <div class="facilities-grid" id="facilities-container">
+          <!-- Facilities cards will be injected here -->
+        </div>
+
+        <h3 class="stat-label section-header" style="margin-top: 2.5rem;">STADIUM GATES</h3>
+        <div class="zones-grid" id="facilities-gates-container">
+          <!-- Gates for facilities screen will be injected here -->
+        </div>
+      </main>
+
+      <main class="dashboard" id="transport-view" style="display: none;">
+        <div class="zones-grid" id="transport-container">
+          <!-- Transport cards will be injected here -->
+        </div>
+      </main>
+
+      <main class="dashboard" id="gates-view" style="display: none;">
+        <div class="zones-grid" id="gates-container">
+          <!-- Gates cards will be injected here -->
+        </div>
+        <div id="gate-suggestion-container" class="suggestion-section"></div>
+      </main>
+
+      <nav class="bottom-nav">
+        <div class="nav-item active" data-view="overview-view">
+          <span class="nav-icon">⬚</span>
+          <span class="nav-label">Overview</span>
+        </div>
+        <div class="nav-item" data-view="facilities-view">
+          <span class="nav-icon">◬</span>
+          <span class="nav-label">Facilities</span>
+        </div>
+        <div class="nav-item" data-view="gates-view">
+          <span class="nav-icon">⛩</span>
+          <span class="nav-label">Gates</span>
+        </div>
+        <div class="nav-item" data-view="transport-view">
+          <span class="nav-icon">⌬</span>
+          <span class="nav-label">Transport</span>
+        </div>
+      </nav>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
